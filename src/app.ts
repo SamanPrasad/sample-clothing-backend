@@ -1,9 +1,9 @@
 import express from "express";
-import userRouter from "./routes/users.ts";
-import variantRouter from "./routes/variants.ts";
-import sliderImages from "./routes/slider.ts";
-import productsRouter from "./routes/products.ts";
-import productGroupsRouter from "./routes/productGroups.ts";
+import userRouter from "./routes/users";
+import variantRouter from "./routes/variants";
+import sliderImages from "./routes/slider";
+import productsRouter from "./routes/products";
+import productGroupsRouter from "./routes/productGroups";
 import cors from "cors";
 const app = express();
 

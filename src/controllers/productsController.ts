@@ -6,7 +6,7 @@ import { saveVariant } from "../utils/variant";
 import "../model/variant";
 import mongoose from "mongoose";
 import { Variant, VariantType } from "../model/variant";
-import { SIZES_ORDER } from "../constants";
+import { SIZES_ORDER } from "../constants/index";
 
 export const getAllProducts = async (req: Request, res: Response) => {
   const { page = "1", perPage = "10" } = req.query;

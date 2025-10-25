@@ -1,5 +1,7 @@
-import app from "./app.ts";
-import { connectToDatabase } from "./db/connection.ts";
+import app from "./app";
+import { connectToDatabase } from "./db/connection";
+
+const PORT = process.env.PORT || 3000;
 
 const start = async () => {
   try {
@@ -8,7 +10,7 @@ const start = async () => {
     console.log(error);
     return;
   }
-  app.listen(3000, () => console.log("Server is listening on port 3000..."));
+  app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));
 };
 
 start();
