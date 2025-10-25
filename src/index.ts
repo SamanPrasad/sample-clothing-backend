@@ -10,7 +10,7 @@ const start = async () => {
     console.log(error);
     return;
   }
-  app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));
+  // app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));
 };
 
 start();
