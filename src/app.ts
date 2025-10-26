@@ -16,7 +16,8 @@ app.use(
   })
 );
 app.use(express.json());
-app.get("/", (req, res) => res.send("test"));
+app.get("/", (req, res) => res.send("Welcome to Sample Clothing..."));
+
 app.use("/users", userRouter);
 app.use("/products", productsRouter);
 app.use("/variants", variantRouter);
