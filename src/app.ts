@@ -5,11 +5,16 @@ import sliderImages from "./routes/slider";
 import productsRouter from "./routes/products";
 import productGroupsRouter from "./routes/productGroups";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
+
+const ORIGIN = process.env.ORIGIN;
+if (!ORIGIN) throw new Error("No origin found!");
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ORIGIN,
     allowedHeaders: "*",
     methods: "*",
     credentials: true,
