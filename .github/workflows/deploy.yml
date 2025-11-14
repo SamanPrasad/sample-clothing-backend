@@ -43,6 +43,7 @@ jobs:
             cd ~/app
             unzip -o deploy.zip
             npm install
+            npm run build
             pm2 restart myapp || pm2 start npm --name "myapp" -- start
             pm2 save
           ssh-shell: "bash -lc"
