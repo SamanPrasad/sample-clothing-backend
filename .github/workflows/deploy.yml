@@ -59,7 +59,7 @@ jobs:
 
             npm run build-pm2
 
-            pm2 restart sample-clothing || pm2 start dist/index.js --name "sample-clothing" -- start
+            pm2 reload sample-clothing || pm2 start dist/index.js --name "sample-clothing"
 
             pm2 save
           ssh-shell: "bash -lc"
