@@ -1,4 +1,4 @@
-name: Deploy Sample Clothing Backen to EC2
+name: Deploy Sample Clothing Backend to EC2
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "deploy.zip"
-          target: "~/app"
+          target: "/home/ubuntu/app"
 
       - name: SSH into EC2 and deploy
         uses: appleboy/ssh-action@v0.1.10
@@ -39,11 +39,11 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          ssh-shell: "bash -lc"
           script: |
-            cd ~/app
+            cd /home/ubuntu/app
             unzip -o deploy.zip
             npm install
             npm run build
             pm2 restart myapp || pm2 start npm --name "myapp" -- start
             pm2 save
-          ssh-shell: "bash -lc"
