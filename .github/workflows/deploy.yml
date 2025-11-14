@@ -52,7 +52,6 @@ jobs:
             unzip -o deploy.zip
 
             rm -rf dist
-
             npm install
 
             npm run build-pm2
