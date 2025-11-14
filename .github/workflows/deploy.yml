@@ -45,3 +45,4 @@ jobs:
             npm install
             pm2 restart myapp || pm2 start npm --name "myapp" -- start
             pm2 save
+          ssh-shell: "bash -lc"
