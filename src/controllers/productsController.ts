@@ -69,13 +69,24 @@ export const createProduct = async (
     const response = await session.withTransaction(async () => {
       const productResponse = getResponseObject<ProductType>(req.body, [
         "title",
-        "slug",
         "description",
         "price",
         "colors",
         "sizes",
         "tags",
       ]);
+
+      const existingTitle = await Product.findOne({
+        title: productResponse.title,
+      });
+
+      if (existingTitle) {
+        res.status(401).send("Product Name already exists!");
+        return;
+      }
+
+      const slug = productResponse.title.toLowerCase().replace(/ /g, "-");
+      productResponse.slug = slug;
 
       const product = new Product(productResponse);
       product.isPublished = false;
@@ -106,4 +117,16 @@ export const createProduct = async (
   } finally {
     session.endSession();
   }
+};
+
+export const getProductById = async (req: Request, res: Response) => {
+  const slug = req.params.id.toLowerCase();
+  const product = await Product.findOne({ slug: slug }).populate("variants");
+  res.json({
+    status: true,
+    message: "success",
+    data: {
+      product,
+    },
+  });
 };
