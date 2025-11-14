@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "deploy.zip"
-          target: "~/app"
+          target: "~/ubuntu/app"
 
       - name: SSH into EC2 and deploy
         uses: appleboy/ssh-action@v0.1.10
@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/app
+            cd ~/ubuntu/app
             unzip -o deploy.zip
             npm install
             pm2 restart myapp || pm2 start npm --name "myapp" -- start
