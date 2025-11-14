@@ -53,7 +53,9 @@ jobs:
 
             npm install
 
-            pm2 restart myapp || pm2 start npm --name "myapp" -- start
+            npm run build-pm2
+
+            pm2 restart sample-clothing || pm2 start npm --name "sample-clothing" -- start
 
             pm2 save
           ssh-shell: "bash -lc"
