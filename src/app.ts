@@ -23,7 +23,9 @@ app.use(
 );
 
 app.use(express.json());
-app.get("/", (req, res) => res.send("Welcome to Sample Clothing......"));
+app.get("/", (req, res) =>
+  res.send("Welcome to Sample Clothing Backend......")
+);
 app.use("/storage", storageRouter);
 app.use("/users", userRouter);
 app.use("/products", productsRouter);
